@@ -15,7 +15,7 @@ const createPalette = (palette: PaletteInput): Palette => {
     white = '#fff',
     grey = '#f7f9fa',
     black = '#222',
-    primary = 'rgba(255, 106, 164, 1)',
+    primary = '#D33B2C',
     secondary = '#f53b57'
   } = palette;
 
