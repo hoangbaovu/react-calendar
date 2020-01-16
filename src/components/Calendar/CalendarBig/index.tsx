@@ -16,6 +16,7 @@ const CalendarBig = () => {
   const date = new Date();
   const getYear = date.getFullYear();
   const getMonth = date.getMonth();
+  const getDate = date.getDate();
 
   const month = [];
   month[0] = "Tháng 1";
@@ -34,7 +35,7 @@ const CalendarBig = () => {
   return (
     <CalendarBigDiv>
       <CalendarBigTop month={month[getMonth]} year={getYear} />
-      <CalendarBigMiddle />
+      <CalendarBigMiddle date={getDate} />
       <CalendarBigBottom />
     </CalendarBigDiv>
   )

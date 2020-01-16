@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+type Props = {
+  date: number,
+}
+
 const Middle = styled.div`
   display: flex;
   justify-content: center;
@@ -15,10 +19,10 @@ const Date = styled.p`
   margin: 0;
 `;
 
-const CalendarBigDate = () => {
+const CalendarBigDate = ({ date }: Props) => {
   return (
     <Middle>
-      <Date>14</Date>
+      <Date>{date}</Date>
     </Middle>
   )
 }

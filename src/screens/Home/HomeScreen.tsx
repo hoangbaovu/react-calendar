@@ -1,7 +1,6 @@
 import React from 'react';
 import { Layout, Row, Col } from 'antd';
-import { CalendarBig } from '../../components/Calendar';
-const { Header, Footer, Content } = Layout;
+import { CalendarBig, CalendarHeader } from '../../components/Calendar';
 
 const HomeScreen = () => {
   return (
@@ -12,9 +11,7 @@ const HomeScreen = () => {
         </Col>
         <Col span={17}>
           <Layout>
-          <Header>Header</Header>
-          <Content>Content</Content>
-          <Footer>Footer</Footer>
+            <CalendarHeader />
           </Layout>
         </Col>
       </Row>
