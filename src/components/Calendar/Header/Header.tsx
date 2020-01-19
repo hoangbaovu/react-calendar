@@ -3,6 +3,7 @@ import { Tabs } from 'antd';
 import './Header.less';
 import TabPaneNav from './TabPaneNav';
 import styled from 'styled-components';
+import { CalendarMonthYear } from '../index';
 
 const { TabPane } = Tabs;
 
@@ -21,9 +22,7 @@ const CalendarHeader = () => {
           }
           key="1"
         >
-          <p>Content of Tab Pane 1</p>
-          <p>Content of Tab Pane 1</p>
-          <p>Content of Tab Pane 1</p>
+          <CalendarMonthYear />
         </TabPane>
         <TabPane
           tab={

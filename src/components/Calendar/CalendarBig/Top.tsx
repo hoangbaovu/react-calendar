@@ -7,7 +7,7 @@ const Nav = styled.div`
   font-size: 1.125em;
   flex-direction: column;
   align-items: center;
-  padding: 10px 0;
+  padding: 9px 0;
 `;
 
 const Year = styled.p`
