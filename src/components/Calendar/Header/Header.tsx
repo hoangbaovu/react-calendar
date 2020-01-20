@@ -1,41 +1,73 @@
 import React from 'react';
-import { Tabs } from 'antd';
-import './Header.less';
-import TabPaneNav from './TabPaneNav';
 import styled from 'styled-components';
-import { CalendarMonthYear } from '../index';
+import { Icon } from 'antd';
+import { NavBarData } from '../../../mocks/data.navbar';
+import { useSmallScreen } from '../../../shared/hooks';
 
-const { TabPane } = Tabs;
-
-const HeaderTabs = styled(Tabs)`
+const Nav = styled.nav`
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #f8f8f8;
 `;
 
+const NavLink = styled.a`
+  background: #f8f8f8;
+  flex-grow: 1;
+  font-size: 14px;
+  padding: 5px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    background: ${props => props.theme.palette.white};
+  }
+
+  &:hover {
+    background: ${props => props.theme.palette.white};
+  }
+`;
+
+const NavLinkIcon = styled(Icon)`
+  font-size: 28px;
+  margin-bottom: 10px;
+`
+
 const CalendarHeader = () => {
+
+  const isSmallScreen = useSmallScreen();
+
+  const renderNavbar = (data: any, mobile: boolean) => {
+    if(mobile) {
+      return (
+        data.map((item: any, index: number) => {
+          return (
+            <NavLink href="#" key={index}>
+              <NavLinkIcon type={item.icon} />
+              { item.name }
+            </NavLink>
+          )
+        })
+      );
+    } else {
+      return (
+        data.map((item: any, index: number) => {
+          return (
+            <NavLink href="#" key={index} style={{ display: `${item.desktop ? '' : 'none'}` }}>
+              <NavLinkIcon type={item.icon} />
+              { item.name }
+            </NavLink>
+          )
+        })
+      );
+    }
+  }
+
   return (
-    <div className="card-container">
-      <HeaderTabs type="card">
-        <TabPane
-          tab={
-            <TabPaneNav title="Tháng" icon="calendar" />
-          }
-          key="1"
-        >
-          <CalendarMonthYear />
-        </TabPane>
-        <TabPane
-          tab={
-            <TabPaneNav title="Sự Kiện" icon="solution" />
-          }
-          key="2"
-        >
-          <p>Content of Tab Pane 2</p>
-          <p>Content of Tab Pane 2</p>
-          <p>Content of Tab Pane 2</p>
-        </TabPane>
-      </HeaderTabs>
-    </div>
+    <Nav>
+      {renderNavbar(NavBarData.data, isSmallScreen)}
+    </Nav>
   )
 }
 

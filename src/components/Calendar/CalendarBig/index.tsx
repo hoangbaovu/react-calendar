@@ -4,15 +4,18 @@ import CalendarBigMiddle from './Middle';
 import CalendarBigBottom from './Bottom';
 import styled from 'styled-components';
 
-const CalendarBigDiv = styled.div`
+type CalendarBigProps = {
+  screen?: string,
+}
+
+const CalendarBigDiv = styled.div<CalendarBigProps>`
   display: flex;
-  height: 100vh;
-  background: #f8f8f8;
+  height: ${props => (props.screen === 'mobile' ? 'calc(100vh - 70px)' : '100vh')};
   flex-direction: column;
+  background: #f8f8f8;
 `;
 
-const CalendarBig = () => {
-
+const CalendarBig = ({ screen }: CalendarBigProps) => {
   const date = new Date();
   const getYear = date.getFullYear();
   const getMonth = date.getMonth();
@@ -33,7 +36,7 @@ const CalendarBig = () => {
   month[11] = "Tháng 12";
 
   return (
-    <CalendarBigDiv>
+    <CalendarBigDiv screen={screen}>
       <CalendarBigTop month={month[getMonth]} year={getYear} />
       <CalendarBigMiddle date={getDate} />
       <CalendarBigBottom />

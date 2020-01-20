@@ -49,6 +49,11 @@ const LunaLeft = styled.div`
 const LunaLeftTop = styled.div`
   justify-content: space-between;
   margin-bottom: 20px;
+
+  @media (max-width: 468px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const LunaLeftBottom = styled.div`
@@ -83,6 +88,10 @@ const LunaDate = styled.p`
   font-size: 64px;
   margin: 0;
   line-height: 1.2;
+
+  @media (max-width: 468px) {
+    font-size: calc(64px / 1.5);
+  }
 `;
 const LunaYear = styled.p`
   font-size: 16px;

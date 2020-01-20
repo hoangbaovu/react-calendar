@@ -1,19 +1,19 @@
 import React from 'react';
 import { Layout, Row, Col } from 'antd';
-import { CalendarBig, CalendarHeader2 } from '../../components/Calendar';
+import { CalendarBig, CalendarHeader } from '../../components/Calendar';
 import { CalendarMonthYear } from '../../components/Calendar';
 
 const HomeScreen = () => {
+  
   return (
     <Layout>
       <Row>
-        <Col span={7}>
+        <Col lg={7}>
           <CalendarBig />
         </Col>
-        <Col span={17}>
+        <Col lg={17}>
           <Layout>
-            {/* <CalendarHeader /> */}
-            <CalendarHeader2 />
+            <CalendarHeader />
             <CalendarMonthYear />
           </Layout>
         </Col>

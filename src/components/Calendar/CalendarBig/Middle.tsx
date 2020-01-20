@@ -17,6 +17,10 @@ const Date = styled.p`
   font-size: 13.750em;
   font-weight: bold;
   margin: 0;
+
+  @media (max-width: 468px) {
+    font-size: 3.750em;
+  }
 `;
 
 const CalendarBigDate = ({ date }: Props) => {
