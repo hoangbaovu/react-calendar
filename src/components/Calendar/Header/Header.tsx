@@ -3,15 +3,24 @@ import styled from 'styled-components';
 import { Icon } from 'antd';
 import { NavBarData } from '../../../mocks/data.navbar';
 import { useSmallScreen } from '../../../shared/hooks';
+import { NavLink } from "react-router-dom";
 
 const Nav = styled.nav`
   display: flex;
   align-items: center;
   text-align: center;
   background: #f8f8f8;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99999999;
+  }
 `;
 
-const NavLink = styled.a`
+const StyledNavLink = styled(NavLink)`
   background: #f8f8f8;
   flex-grow: 1;
   font-size: 14px;
@@ -19,13 +28,21 @@ const NavLink = styled.a`
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
+  color: ${props => props.theme.palette.black };
 
   @media (max-width: 768px) {
     background: ${props => props.theme.palette.white};
   }
 
   &:hover {
+    color: ${props => props.theme.palette.primary}
     background: ${props => props.theme.palette.white};
+  }
+
+  &.active {
+    background: ${props => props.theme.palette.white};
+    color: ${props => props.theme.palette.primary };
+    font-weight: bold;
   }
 `;
 
@@ -43,10 +60,10 @@ const CalendarHeader = () => {
       return (
         data.map((item: any, index: number) => {
           return (
-            <NavLink href="#" key={index}>
+            <StyledNavLink to={item.path} exact key={index}>
               <NavLinkIcon type={item.icon} />
               { item.name }
-            </NavLink>
+            </StyledNavLink>
           )
         })
       );
@@ -54,10 +71,10 @@ const CalendarHeader = () => {
       return (
         data.map((item: any, index: number) => {
           return (
-            <NavLink href="#" key={index} style={{ display: `${item.desktop ? '' : 'none'}` }}>
+            <StyledNavLink to={item.path} exact  key={index} style={{ display: `${item.desktop ? '' : 'none'}` }} >
               <NavLinkIcon type={item.icon} />
               { item.name }
-            </NavLink>
+            </StyledNavLink>
           )
         })
       );

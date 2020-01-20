@@ -3,7 +3,7 @@ export const NavBarData = {
     {
       id: 1,
       name: 'Ngày',
-      path: '/date',
+      path: '/',
       icon: 'calendar',
       desktop: false,
     },

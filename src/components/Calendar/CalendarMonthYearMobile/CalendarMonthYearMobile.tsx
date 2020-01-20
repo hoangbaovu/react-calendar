@@ -1,8 +1,9 @@
 import React from 'react';
 import { Calendar, Badge } from 'antd';
-import './CalendarMonthYear.less';
 import moment from 'moment';
 import 'moment/locale/vi';
+import './CalendarMonthYearMobile.less';
+
 
 const getListData = (value: any) => {
   let listData;
@@ -56,17 +57,16 @@ const monthCellRender = (value: any) => {
   ) : null;
 }
 
-const CalendarMonthYear = () => {
+const CalendarMonthYearMobile = () => {
   const months = 'Tháng 1_Tháng 2_Tháng 3_Tháng 4_Tháng 5_Tháng 6_Tháng 7_Tháng 8_Tháng 9_Tháng 10_Tháng 11_Tháng 12'.split('_');
   moment.updateLocale('vi', {
-    weekdaysMin: 'Chủ Nhật_Thứ Hai_Thứ Ba_Thứ Tư_Thứ Năm_Thứ Sáu_Thứ Bảy'.split('_'),
+    weekdaysMin: 'CN_Hai_Ba_Tư_Năm_Sáu_Bảy'.split('_'),
     months,
     monthsShort: months,
   });
-  
   return (
-    <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />
+    <Calendar fullscreen={false} />
   )
 }
 
-export default CalendarMonthYear;
+export default CalendarMonthYearMobile;
