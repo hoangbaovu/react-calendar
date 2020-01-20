@@ -29,6 +29,7 @@ const StyledNavLink = styled(NavLink)`
   display: flex;
   flex-direction: column;
   color: ${props => props.theme.palette.black };
+  transition: .3s all;
 
   @media (max-width: 768px) {
     background: ${props => props.theme.palette.white};
