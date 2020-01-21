@@ -24,7 +24,7 @@ const StyledNavLink = styled(NavLink)`
   background: #f8f8f8;
   flex-grow: 1;
   font-size: 14px;
-  padding: 5px;
+  padding: 8px;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -49,7 +49,7 @@ const StyledNavLink = styled(NavLink)`
 
 const NavLinkIcon = styled(Icon)`
   font-size: 28px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 `
 
 const CalendarHeader = () => {
