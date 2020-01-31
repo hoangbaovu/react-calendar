@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+type Props = {
+  weekday: string,
+  weekOfYear: number,
+  dayOfYear: number,
+}
+
 const Bottom = styled.div`
   display: flex;
   flex-direction: column;
@@ -115,19 +121,19 @@ const LunaZodiacHoursContent = styled.p`
   text-transform: none;
 `;
 
-const CalendarBigBottom = () => {
+const CalendarBigBottom = ({ weekday, weekOfYear, dayOfYear }: Props) => {
   return (
     <Bottom>
       <Nav>
-        <div>DECEMBER</div>
-        <NavCenter>Thứ 7</NavCenter>
-        <div>Saturday</div>
+        <div></div>
+        <NavCenter>{ weekday }</NavCenter>
+        <div></div>
       </Nav>
       <Luna>
         <LunaLeft>
           <LunaLeftTop>
-            <span style={{ marginRight: '10px' }}>Tuần: 52</span>
-            <span>Ngày: 357</span>
+            <span style={{ marginRight: '10px' }}>Tuần: { weekOfYear }</span>
+            <span>Ngày: { dayOfYear }</span>
           </LunaLeftTop>
           <LunaLeftBottom>
             <p>Ngày Giáp Ngọ</p>

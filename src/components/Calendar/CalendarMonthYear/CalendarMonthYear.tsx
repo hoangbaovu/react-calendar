@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Calendar, Badge } from 'antd';
 import './CalendarMonthYear.less';
 import moment from 'moment';
@@ -7,8 +7,7 @@ import {
   MOMENT_MONTHS_FULL,
   MOMENT_WEEKDAYSMIN_FULL,
 } from '../../../constants';
-import { useSelector, useDispatch  } from "react-redux";
-import { Counter } from '../../../types/counter.types';
+import { useDispatch  } from "react-redux";
 
 const getListData = (value: any) => {
   let listData;
@@ -63,30 +62,39 @@ const monthCellRender = (value: any) => {
 }
 
 const CalendarMonthYear = () => {
+  const [date, setDate ] = useState(moment());
+  const [dateSelected, setDateSelected] = useState(moment());
+
   const months = MOMENT_MONTHS_FULL.split('_');
   moment.updateLocale('vi', {
     weekdaysMin: MOMENT_WEEKDAYSMIN_FULL.split('_'),
     months,
     monthsShort: months,
   });
-  const counter = useSelector((state: Counter) => state.counter.num);
 
   const dispatch = useDispatch();
+
+  const onSelect = (value: any) => {
+    setDate(value);
+    setDateSelected(value);
+    dispatch({
+      type: "SELECTED_DATE",
+      dateSelected: value
+    })
+  };
+
+  const onPanelChange = (value: any) => {
+    setDate(value);
+  };
+
   return (
-    <div>
-      {counter}
-      <button
-        onClick={() =>
-          dispatch({
-            type: "DECREMENT",
-            step: 1
-          })
-        }
-      >
-        DECREMENT
-      </button>
-      <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />
-    </div>
+    <Calendar
+      value={date}
+      onSelect={onSelect}
+      dateCellRender={dateCellRender}
+      monthCellRender={monthCellRender}
+      onPanelChange={onPanelChange}
+    />
   )
 }
 
