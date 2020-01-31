@@ -7,6 +7,8 @@ import {
   MOMENT_MONTHS_FULL,
   MOMENT_WEEKDAYSMIN_FULL,
 } from '../../../constants';
+import { useSelector, useDispatch  } from "react-redux";
+import { Counter } from '../../../types/counter.types';
 
 const getListData = (value: any) => {
   let listData;
@@ -67,9 +69,24 @@ const CalendarMonthYear = () => {
     months,
     monthsShort: months,
   });
-  
+  const counter = useSelector((state: Counter) => state.counter.num);
+
+  const dispatch = useDispatch();
   return (
-    <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />
+    <div>
+      {counter}
+      <button
+        onClick={() =>
+          dispatch({
+            type: "DECREMENT",
+            step: 1
+          })
+        }
+      >
+        DECREMENT
+      </button>
+      <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />
+    </div>
   )
 }
 

@@ -7,13 +7,29 @@ import HomeScreenDesktop from './screens/desktop/HomeScreen';
 import HomeScreenMobile from './screens/mobile/HomeScreen';
 import App from './App';
 import { useSmallScreen } from './shared/hooks';
+import { useSelector, useDispatch  } from "react-redux";
+import { Counter } from './types/counter.types';
 
 const Main: React.FC = () => {  
   const isSmallScreen = useSmallScreen();
+  const counter = useSelector((state: Counter) => state.counter.num);
+  const dispatch = useDispatch();
 
+  console.log(counter);
   return (
     <>
       <GlobalStyle />
+      {counter}
+      <button
+        onClick={() =>
+          dispatch({
+            type: "INCREMENT",
+            step: 1
+          })
+        }
+      >
+        Increment
+      </button>
       <ThemeProvider theme={createTheme}>
         <Switch>
           {
