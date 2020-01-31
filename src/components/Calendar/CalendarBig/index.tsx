@@ -29,9 +29,16 @@ const CalendarBig = ({ screen }: CalendarBigProps) => {
 
   return (
     <CalendarBigDiv screen={screen}>
-      <CalendarBigTop month={getMonth} year={getYear} />
+      <CalendarBigTop
+        month={getMonth}
+        year={getYear}
+      />
       <CalendarBigMiddle date={getDate} />
-      <CalendarBigBottom weekday={getWeekday} weekOfYear={getWeekOfYear} dayOfYear={getDayOfYear} />
+      <CalendarBigBottom
+        weekday={getWeekday}
+        weekOfYear={getWeekOfYear}
+        dayOfYear={getDayOfYear}
+      />
     </CalendarBigDiv>
   )
 }

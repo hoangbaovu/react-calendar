@@ -63,8 +63,8 @@ const monthCellRender = (value: any) => {
 
 const CalendarMonthYear = () => {
   const [date, setDate ] = useState(moment());
+  // eslint-disable-next-line
   const [dateSelected, setDateSelected] = useState(moment());
-
   const months = MOMENT_MONTHS_FULL.split('_');
   moment.updateLocale('vi', {
     weekdaysMin: MOMENT_WEEKDAYSMIN_FULL.split('_'),
